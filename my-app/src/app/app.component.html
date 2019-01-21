@@ -1,0 +1,35 @@
+<h1>
+    Welcome to {{ title }}!
+  </h1>
+<h2>{{student.name | uppercase}}</h2>
+<div>
+    
+    
+  <ol>
+      <li *ngFor="let student of students " >
+          <label>Id:
+            {{student.id}}
+          </label>
+          <label>Name:
+               {{student.name}}
+          </label>
+          <button type="submit" (click)='onSelect(student)' >Show Details</button>
+          <button type="submit" (click)="removeStudent(student)" >Remove</button>
+        </li>
+  </ol>
+  <div *ngIf="selectedStudent">
+    <div><span>id: </span>{{selectedStudent.id}}</div>
+      <label>Name:
+            <input [(ngModel)]="selectedStudent.name" placeholder="name">
+      </label>
+      
+  </div>
+  <form (submit)="addStudent()">
+    <label>Id</label>
+    <input type="text" name='id1' [(ngModel)]="id1" >
+    <label>Name:
+        <input type="text" name='name1' [(ngModel)]="name1" placeholder="name">
+    </label>
+    <button type="submit">Add</button>
+  </form>
+</div>
